@@ -258,7 +258,7 @@ void diagonal_search(Trie *t1, string word, int i, int j, int starti, int startj
             tempw=tempw.substr(1);
             if (t1->searchWord(tempw))
             {
-                cout<<"\nWord : "<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")";
+                file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
             }
         }
         word.clear();        
@@ -373,7 +373,7 @@ void other_diagonal_search(Trie *t1, string word, int i, int j, int starti, int 
             tempw=tempw.substr(1);
             if (t1->searchWord(tempw))
             {
-                cout<<"\nWord : "<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")";
+               file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
             }
         }
         word.clear();        
@@ -467,15 +467,16 @@ int main()
 
     reverse_vertical_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj);
 
-    // diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, tempw);
+    diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, tempw);
 
 
-    // reverse_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2, tempw);
+    reverse_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2, tempw);
 
-    // other_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2,tempw);
+    other_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2,tempw);
 
-    // reverse_other_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2,tempw);
+    reverse_other_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2,tempw);
 
+    file.close();
     return 0;
 }
 
