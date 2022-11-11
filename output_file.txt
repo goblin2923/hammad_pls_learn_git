@@ -36,3 +36,8 @@ blue (0,4) (3,4)
 blue (2,6) (5,6)
 xxx (3,7) (5,7)
 neo (0,8) (2,8)
+Vertically Backwards
+row (5,0) (3,0)
+dog (5,3) (3,3)
+xxx (5,7) (3,7)
+join (5,10) (2,10)
