@@ -13,6 +13,8 @@ int main()
     string word;
     string tempw;
 
+    
+    //can be done inside function
     int wordSi=0, wordSj=0;
     int wordEi=0, wordEj=0;
     
