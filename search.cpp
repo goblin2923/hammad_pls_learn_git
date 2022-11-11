@@ -63,6 +63,7 @@ void output_array()
 
 }
 
+//no need to send everything in function
 void horizontal_search(Trie *t1, string word, int i, int j, int starti, int startj,
                        int wordSi, int wordSj, int wordEi, int wordEj)
 {
