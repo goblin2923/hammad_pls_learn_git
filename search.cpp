@@ -8,12 +8,6 @@ using namespace std;
 
 ofstream file;
 
-void output_to_file()
-{
-  file.open("output_file.txt");
-}
-
-
 char arr[row][column] = {
                           {'d','o','g','x','b','x','x','x','n','o','o','n'}
                          ,{'r','h','e','l','l','o','t','h','e','r','e','x'}
@@ -23,7 +17,6 @@ char arr[row][column] = {
                          ,{'r','l','x','d','r','x','e','x','t','x','j','a'}
                          ,{'d','r','o','w','b','l','o','n','k','g','o','d'}
                         };
-
 
 void insertInTrie(Trie *t1)
 {
@@ -40,7 +33,6 @@ void insertInTrie(Trie *t1)
       }
       cout<<"\nDictionary trie created succassfully!\n";
     }
-
 }
 
 
@@ -63,10 +55,17 @@ void output_array()
 
 }
 
-void horizontal_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj)
+void horizontal_search(Trie *t1)
 {
-    output_to_file();
+    string word;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int starti=0,startj=0;
+    
+
     cout<<"\n\nHORIZONTAL\n";
     file<<"Horizontal\n";
     for (;i<row;)
@@ -82,7 +81,7 @@ void horizontal_search(Trie *t1, string word, int i, int j, int starti, int star
             wordEi=i; 
             if (t1->searchWord(word) && word.length()>=minLen)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
         }
         word.clear();
@@ -97,9 +96,16 @@ void horizontal_search(Trie *t1, string word, int i, int j, int starti, int star
     }
 }
 
-void reverse_horizontal_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj)
+void reverse_horizontal_search(Trie *t1)
 {
+    string word;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int starti=0,startj=0;
+
     cout<<"\n\nREVERSE HORIZONTAL\n";
     file<<"Reverse Horizontal\n";
     i=wordEi=starti=0;
@@ -118,7 +124,7 @@ void reverse_horizontal_search(Trie *t1, string word, int i, int j, int starti, 
             wordEi=i; 
             if (t1->searchWord(word) && word.length()>=minLen)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
         }
         word.clear();
@@ -133,9 +139,16 @@ void reverse_horizontal_search(Trie *t1, string word, int i, int j, int starti, 
     }
 }
 
-void vertical_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj)
+void vertical_search(Trie *t1)
 {
+    string word;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int starti=0,startj=0;
+
     cout<<"\n\nVERTICAL\n";
     file<<"Vertical\n";
 
@@ -155,7 +168,7 @@ void vertical_search(Trie *t1, string word, int i, int j, int starti, int startj
             wordEi=i; 
             if (t1->searchWord(word) && word.length()>=minLen)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
         }
         word.clear();
@@ -168,12 +181,18 @@ void vertical_search(Trie *t1, string word, int i, int j, int starti, int startj
         if (startj==column)
             break;
     }
-
 }
 
-void reverse_vertical_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj)
+void reverse_vertical_search(Trie *t1)
 {
+
+    string word;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int starti=0,startj=0;
 
     cout<<"\n\nVERTICALLY BACKWARDS\n";
     file<<"Vertically Backwards\n";
@@ -193,7 +212,7 @@ void reverse_vertical_search(Trie *t1, string word, int i, int j, int starti, in
             wordEi=i; 
             if (t1->searchWord(word) && word.length()>=minLen)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
         }
         word.clear();
@@ -208,20 +227,20 @@ void reverse_vertical_search(Trie *t1, string word, int i, int j, int starti, in
     }
 }
 
-void diagonal_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj,int k, int temp, string tempw)
+void diagonal_search(Trie *t1)
 {
- //Diagonal Search
+    string word;
+    string tempw;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int k,temp=0, temp2=0;
+    //Diagonal Search
 	cout<<"\n\nDIAGONAL\n";
     file<<"Diagonal\n";
-    i=wordEi=starti=0;
-    j=wordSj=startj=0;
-
-    i=starti;
-    j=i;
-    wordSi=i;
-    wordSj=j;
-    k=0,temp=0;
+    
     for (;;)
     {
         if(i!=column)
@@ -247,7 +266,7 @@ void diagonal_search(Trie *t1, string word, int i, int j, int starti, int startj
             wordEi=j; 
             if (t1->searchWord(word) && word.length()>=minLen)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
             j++;k--;
         }
@@ -258,28 +277,28 @@ void diagonal_search(Trie *t1, string word, int i, int j, int starti, int startj
             tempw=tempw.substr(1);
             if (t1->searchWord(tempw))
             {
-                file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
         }
         word.clear();        
     }
 }
 
-void reverse_diagonal_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj,int k, int temp, int temp2, string tempw)
+void reverse_diagonal_search(Trie *t1)
 {
 
+    string word;
+    string tempw;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int k,temp=0, temp2=0;
     //Reverse Diagonal Search
     cout<<"\n\nREVERSE DIAGONAL\n";
     file<<"Reverse Diagonal\n";
 
-    i=wordEi=starti=0;
-    j=wordSj=startj=0;
-
-    wordSi=i;
-    wordSj=j;
-    k=0,temp=0;
-    temp2=0;
     for (;;)
     {
         if(i!=row)
@@ -306,7 +325,7 @@ void reverse_diagonal_search(Trie *t1, string word, int i, int j, int starti, in
             wordEi=k; 
             if (t1->searchWord(word) && word.length()>=minLen)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
             j++;k--;
         }
@@ -318,21 +337,28 @@ void reverse_diagonal_search(Trie *t1, string word, int i, int j, int starti, in
 
             if (t1->searchWord(tempw))
             {
-                file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
         }
         word.clear();        
     }
 }
 
-void other_diagonal_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj,int k, int temp, int temp2, string tempw)
+void other_diagonal_search(Trie *t1)
 {
-
 	cout<<"\n\nOTHER DIAGONAL\n";
     file<<"Other Diagonal\n";
-    i=wordEi=starti=column-1;
-    j=wordSj=startj=0;
+
+    string word;
+    string tempw;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int k,temp=0, temp2=0;
+    i=wordEi=column-1;
+    j=wordSj=0;
 
     wordSi=i;
     wordSj=j;
@@ -361,38 +387,45 @@ void other_diagonal_search(Trie *t1, string word, int i, int j, int starti, int 
             wordEi=j; 
             if (t1->searchWord(word) && word.length()>=3)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                cout<<"\nWord : "<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")";
             }
             j++;k++;
         }
         // cout<<"\n";
-        tempw=word;
-        while(tempw.length()>minLen)
+        string tempw=word;
+        for(int s;tempw.length()>minLen;)
         {
             ++wordSi;++wordSj;
             tempw=tempw.substr(1);
             if (t1->searchWord(tempw))
             {
-               file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                cout<<"\nWord : "<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")";
             }
         }
         word.clear();        
     }
 }
 
-void reverse_other_diagonal_search(Trie *t1, string word, int i, int j, int starti, int startj,
-                       int wordSi, int wordSj, int wordEi, int wordEj,int k, int temp, int temp2, string tempw)
+void reverse_other_diagonal_search(Trie *t1)
 {
+    string word;
+    string tempw;
+
+    int wordSi=0, wordSj=0;
+    int wordEi=0, wordEj=0;
+    
+    int i=0,j=0;
+    int starti=0,startj=0;
+    int k=0,temp=0, temp2=0;
+
 //Reverse Other Diagonal Search
     cout<<"\n\nREVERSE OTHER DIAGONAL\n";
     file<<"Reverse Other Diagonal\n";
 
-    i=wordEi=starti=column-1;
+    i=wordEi=wordSi=column-1;
     j=wordSj=startj=0;
 
-    wordSi=i;
-    wordSj=j;
-    k=temp=temp2=0;
+
     for (;;)
     {
         if(temp!=row)
@@ -418,7 +451,7 @@ void reverse_other_diagonal_search(Trie *t1, string word, int i, int j, int star
             wordEi=j; 
             if (t1->searchWord(word) && word.length()>=minLen)
             {
-                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<word<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
             j--;k--;
         }
@@ -431,7 +464,7 @@ void reverse_other_diagonal_search(Trie *t1, string word, int i, int j, int star
 
             if (t1->searchWord(tempw))
             {
-                file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")"<<endl;
+                file<<tempw<< " ("<<wordSi<<","<<wordSj<<") ("<<wordEi<<","<<wordEj<<")\n";
             }
         }
         word.clear();        

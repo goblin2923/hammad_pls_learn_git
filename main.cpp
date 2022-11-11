@@ -10,35 +10,24 @@ int main()
 
     output_array();
 
-    string word;
-    string tempw;
 
-    int wordSi=0, wordSj=0;
-    int wordEi=0, wordEj=0;
-    
-    int i=0,j=0;
-    int starti=0,startj=0;
-    int k,temp=0;
-    int temp2=0;
+    file.open("output_file.txt",ios::out);
 
+    horizontal_search(t1);
 
+    reverse_horizontal_search(t1);
 
-    horizontal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj);
+    vertical_search(t1);
 
-    reverse_horizontal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj);
+    reverse_vertical_search(t1);
 
-    vertical_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj);
+    diagonal_search(t1);
 
-    reverse_vertical_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj);
+    reverse_diagonal_search(t1);
 
-    diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, tempw);
+    other_diagonal_search(t1);
 
-
-    reverse_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2, tempw);
-
-    other_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2,tempw);
-
-    reverse_other_diagonal_search(t1, word, i, j, starti, startj, wordSi, wordSj, wordEi, wordEj, k, temp, temp2,tempw);
+    reverse_other_diagonal_search(t1);
 
     file.close();
     return 0;
